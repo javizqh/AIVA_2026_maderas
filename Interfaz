@@ -1,0 +1,20 @@
+<Tabla filename="Muestra_001.jpg">
+    <Defecto x0="700" y0="770" width="40" height="46" gravedad="99%" tipo="grieta"/>
+    <Defecto x0="20" y0="30" width="43" height="45" gravedad="80%" tipo="nudo"/>
+    ...
+<Tabla>
+
+/**
+* Función que detecta fallos en la tabla.
+*
+* input parameters
+* =======================
+* image_filename: nombre del fichero que contiene la imagen.
+* xml_file: nombre del fichero XML donde se escribe el resultado. Si NULL no hay que escribir nada
+*
+* return:
+* Un puntero a un array de enteros. El primero entero corresponde al número de rectangulos detectados.
+* 0 implica que no se ha detectado ninguno.
+* Cada rectángulo se compone de 5 enteros correspondientes a x0,y0,width, height y conf.
+*/
+int* detectar(char *image_filename, char *xml_file)
