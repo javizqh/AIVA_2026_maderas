@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04-arm # Most similar to Raspberry Pi Os
+    runs-on: ubuntu-latest # Most similar to Raspberry Pi Os
     steps:
       - uses: actions/checkout@v5
       - name: Set up Python
