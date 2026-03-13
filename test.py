@@ -1,6 +1,7 @@
 import os
 import re
 import unittest
+import time
 
 import cv2
 
@@ -122,6 +123,25 @@ class TestDetect(unittest.TestCase):
                     correct += 1
 
         self.assertEqual(correct, n_instances)
+
+    def test_inference_time(self):
+        """
+        Test that the inference time is less than 1 seconds per image
+        """
+        n_images = 0
+
+        imgs, _ = get_images("dataset")
+        for img in imgs:
+            if n_images >= 20:
+                break
+
+            n_images += 1
+
+            start = time.time()
+            result = detect(img)
+            end = time.time()
+
+            self.assertLess(end - start, 1)
 
 
 if __name__ == "__main_":
