@@ -56,3 +56,4 @@ dkms.conf
 
 # Python enviroment
 .venv
+__pycache__
