@@ -1,2 +1,6 @@
+[![Deploy and test the application in an enviroment similar to production](https://github.com/javizqh/AIVA_2026_maderas/actions/workflows/deploy_test.yml/badge.svg?branch=main)](https://github.com/javizqh/AIVA_2026_maderas/actions/workflows/deploy_test.yml)
+[![Python Linting](https://github.com/javizqh/AIVA_2026_maderas/actions/workflows/python_lint.yml/badge.svg?branch=main)](https://github.com/javizqh/AIVA_2026_maderas/actions/workflows/python_lint.yml)
+
 # AIVA_2026_maderas
+
 El proyecto consiste en el desarrollo de un sistema de visión artificial para detectar defectos en tablas de madera. La juguetera artesanal crea piezas de madera a partir de tablas y quiere descartar defectos de dichas tablas para que no estén presentes en las piezas. Con este objetivo se pretende implementar el sistema software en una línea de producción para cribar los defectos. El sistema final será capaz de detectar defectos, localizarlos y proporcionar una medida de la confianza de la detección de los defectos presentes en una tabla de madera. La localización será proporcionada con un bounding box que engloba el defecto, y el factor de confianza con un valor de 0 a 1. Las salidas del sistema serán almacenadas en un archivo XML.
