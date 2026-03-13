@@ -143,6 +143,39 @@ class TestDetect(unittest.TestCase):
 
             self.assertLess(end - start, 1)
 
+    def test_bad_image(self):
+        """
+        Test that the function raises an error if the image does not exist
+        """
+        with self.assertRaises(Exception):
+            result = detect("img")
+
+    def test_only_image(self):
+        """
+        Test that the function works properly if the image path has been passed
+        and returns a correct result, at least in structure
+        """
+        result = detect("dataset/01.png")
+        self.assertEqual(len(result), result[0] * 5 + 1)
+        self.assertFalse(
+            os.path.exists("test.xml"),
+            "The file exists in the specified directory",
+        )
+
+    def test_image_and_xml(self):
+        """
+        Test that the function works properly if the image path has been passed
+        and returns a correct result, at least in structure. Also checks if the
+        xml has been outputed.
+        """
+        result = detect("dataset/01.png", "test.xml")
+        self.assertEqual(len(result), result[0] * 5 + 1)
+        self.assertTrue(
+            os.path.exists("test.xml"),
+            "The file exists in the specified directory",
+        )
+        os.remove("test.xml")
+
 
 if __name__ == "__main_":
     unittest.main()
