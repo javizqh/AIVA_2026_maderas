@@ -96,6 +96,30 @@ class TestDetect(unittest.TestCase):
 
         self.assertGreaterEqual(correct / n_images, 90)
 
+    def test_confidence(self):
+        """
+        Test that it outputs predictions only with over 50% confidence
+        """
+        correct = 0
+        n_images = 0
+        n_instances = 0
+
+        imgs, _ = get_images("dataset")
+        for img in imgs:
+            if n_images >= 20:
+                break
+
+            n_images += 1
+
+            result = detect(img)
+            for i in range(result[0]):
+                confidence = result[1 + 4 + i * 5]
+                n_instances += 1
+                if confidence >= 50:
+                    correct += 1
+
+        self.assertEqual(correct, n_instances)
+
 
 if __name__ == "__main_":
     unittest.main()
