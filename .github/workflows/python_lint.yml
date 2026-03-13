@@ -1,0 +1,15 @@
+# Ensure Python code is linted and formatted, matching the style guide
+name: Python Linting
+
+on:
+  push:
+
+jobs:
+  black-lint:
+    runs-on: ubuntu-latest
+    name: Python black Lint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: psf/black@stable
+        with:
+          version: "22.3.0"
