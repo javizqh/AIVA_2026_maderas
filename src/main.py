@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 from enum import Enum
 from typing import List
+import os
 
 import cv2
 
@@ -76,6 +77,8 @@ def load_image(path: str) -> np.array:
     Keyword arguments:
     path -- the image path
     """
+    if not os.path.isfile(path):
+        raise Exception("Image does not exist")
 
     img = cv2.imread(path, cv2.IMREAD_COLOR_BGR)
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
