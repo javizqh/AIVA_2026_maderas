@@ -74,6 +74,7 @@ class TestDetect(unittest.TestCase):
         """
         correct = 0
         n_images = 0
+        n_instances = 0
 
         imgs, labels = get_images("dataset")
         for img, label in zip(imgs, labels):
@@ -83,6 +84,8 @@ class TestDetect(unittest.TestCase):
             n_images += 1
 
             groundtruth = read_label(label)
+            n_instances += len(groundtruth)
+
             result = detect(img)
             for i in range(result[0]):
                 pred_label = result[1 + i * 5 : (i + 1) * 5]
@@ -94,7 +97,7 @@ class TestDetect(unittest.TestCase):
                         np.delete(groundtruth, gt_index, 0)
                     gt_index += 1
 
-        self.assertGreaterEqual(correct / n_images, 90)
+        self.assertGreaterEqual(correct / n_instances, 90)
 
     def test_confidence(self):
         """
