@@ -6,6 +6,8 @@ import time
 import cv2
 
 import numpy as np
+import xml.etree.ElementTree as ET
+
 
 from src.main import detect
 
@@ -60,6 +62,15 @@ def read_label(path):
     return matrix
 
 
+def read_result_classes(path):
+    tree = ET.parse(path)
+    root = tree.getroot()
+    types = []
+    for i in range(len(root)):
+        types.append(root[i].attrib["tipo"])
+    return list(set(types))
+
+
 def get_iou(bb1, bb2):
     """
     Calculate the Intersection over Union (IoU) of two bounding boxes.
@@ -98,7 +109,7 @@ class TestDetect(unittest.TestCase):
 
     def test_bbox_detection(self):
         """
-        Test that it can detect the defect with over 90% mean average accuracy
+        Test that it can detect the defect with over 80% mean average accuracy
         """
         correct = 0
         n_images = 0
@@ -150,6 +161,26 @@ class TestDetect(unittest.TestCase):
                     correct += 1
 
         self.assertEqual(correct, n_instances)
+
+    def test_types(self):
+        """
+        Test that it outputs class predictions for the correct type
+        """
+        correct = 0
+        n_images = 0
+        n_instances = 0
+
+        imgs, _ = get_images("dataset")
+        for img in imgs:
+            if n_images >= 40:
+                break
+
+            n_images += 1
+
+            result = detect(img, "tmp.xml")
+            diff_types = read_result_classes("tmp.xml")
+            for diff_type in diff_types:
+                self.assertTrue(diff_type == "nudo" or diff_type == "grieta")
 
     def test_inference_time(self):
         """
