@@ -239,7 +239,6 @@ def train_model():
         device=-1,
         name="Maderas",
     )
-    model.export(format="onnx")
 
 
 if __name__ == "__main__":
