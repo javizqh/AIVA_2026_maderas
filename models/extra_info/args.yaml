@@ -10,7 +10,7 @@ imgsz: 488
 save: true
 save_period: -1
 cache: false
-device: '0'
+device: "0"
 workers: 8
 project: trainings
 name: Maderas6
@@ -107,4 +107,3 @@ auto_augment: randaugment
 erasing: 0
 cfg: null
 tracker: botsort.yaml
-save_dir: /home/javier/Universidad/Master/Aplicaciones_Industriales_y_Comerciales/AIVA_2026_maderas/runs/detect/trainings/Maderas6
