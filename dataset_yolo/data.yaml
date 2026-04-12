@@ -1,0 +1,7 @@
+names:
+  0: nudo
+  1: grieta
+path: ./dataset_yolo
+test: images/test
+train: images/train
+val: images/val
