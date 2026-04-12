@@ -6,17 +6,20 @@ import os
 import cv2
 
 import numpy as np
+from ultralytics import YOLO
+
+model = YOLO("models/model.pt")
 
 
 class WoodDeftect(Enum):
     """Types of defects found in the woods:
 
-    0 -- grieta
-    1 -- nudo
+    0 -- nudo
+    1 -- grieta
     """
 
-    grieta = 0
-    nudo = 1
+    nudo = 0
+    grieta = 1
 
 
 class WoodErrorsOutput:
@@ -97,8 +100,31 @@ def detect_defects(img: np.array) -> List[int]:
     type -- type of the defect. Can be 0 or 1 complying with WoodDeftect enum
     """
 
-    # TODO: this is an mockup
-    return [[700, 770, 40, 46, 99, 0], [20, 30, 43, 45, 80, 1]]
+    defects = []
+
+    results = model([img], verbose=False)
+    for result in results:
+        boxes = result.boxes  # Get the bbox of the result
+
+        # Extract relevant information
+        xywh = boxes.cpu().xywh.numpy()
+        class_type = boxes.cpu().cls.numpy()
+        gravity = boxes.cpu().conf.numpy() * 100
+
+        zipped_data = zip(xywh, gravity, class_type)
+        for bbox, grav, defect_type in zipped_data:
+            defects.append(
+                [
+                    int(bbox[0]),
+                    int(bbox[1]),
+                    int(bbox[2]),
+                    int(bbox[3]),
+                    int(grav),
+                    int(defect_type),
+                ]
+            )
+
+    return defects
 
 
 def detect(image_filename: str, xml_file: str | None = None) -> List[int]:
