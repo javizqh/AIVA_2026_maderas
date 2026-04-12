@@ -1,5 +1,6 @@
 import os
 import re
+import argparse
 import numpy as np
 import pandas as pd
 import cv2
@@ -242,6 +243,21 @@ def train_model():
 
 
 if __name__ == "__main__":
-    # create_yolo_labels()
-    # split_dataset()
-    train_model()
+    parser = argparse.ArgumentParser(
+        description="Visual tracking using particles filter"
+    )
+
+    parser.add_argument("--create", help="Create Yolo labels", action="store_true")
+    parser.add_argument("--split", help="Split Yolo dataset", action="store_true")
+    parser.add_argument("--train", help="Train Yolo model", action="store_true")
+
+    args = parser.parse_args()
+
+    if args.create:
+        create_yolo_labels()
+    elif args.split:
+        split_dataset()
+    elif args.train:
+        train_model()
+    else:
+        parser.print_help()
