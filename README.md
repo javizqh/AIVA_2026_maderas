@@ -45,6 +45,27 @@ print(result)
 
 **En progreso**
 
+## Tests
+
+Para ejecutar los tests (solo en Python) es necesario seguir los 2 pasos de la sección anterior sobre como ejecutar la aplicación en Python.
+
+Una vez estos pasos se hayan realizado, los tests se lanzan con el siguiente comando:
+
+```bash
+python test.py
+```
+
+Estos tests comprueban:
+
+- La función se puede llamar correctamente
+- La detección de los defectos tiene más de un 80% de precisión
+- Solo genera predicciones con más de un 50% de confianza
+- Solo genera salidas de los 2 tipos de defectos: nodo y grieta
+- El tiempo de inferencia es menor de 1 segundo por imagen
+- Si la imagen no existe devuelve un error
+- La función se llama correctamente si solo se le pasa la dirección de la imagen
+- La función se llama correctamente si se le pasa la dirección de la imagen y la dirección de salida del xml
+
 ## Otros
 
 Para entrenar el modelo dirijasé a la [documentación correspondiente](https://github.com/javizqh/AIVA_2026_maderas/blob/main/utils/README.md).
