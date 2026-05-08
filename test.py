@@ -9,7 +9,7 @@ import numpy as np
 import xml.etree.ElementTree as ET
 
 
-from src.defect_detector import detect
+from src.defect_detector import detectar
 
 
 def tryint(s):
@@ -104,7 +104,7 @@ class TestDetect(unittest.TestCase):
         """
         Test that it can be called from other app
         """
-        result = detect("dataset/01.png")
+        result = detectar("dataset/01.png")
         self.assertGreater(len(result), 0)
 
     def test_bbox_detection(self):
@@ -125,7 +125,7 @@ class TestDetect(unittest.TestCase):
             groundtruth = read_label(label)
             n_instances += len(groundtruth)
 
-            result = detect(img)
+            result = detectar(img)
             for i in range(result[0]):
                 pred_label = result[1 + i * 5 : (i + 1) * 5]
 
@@ -153,7 +153,7 @@ class TestDetect(unittest.TestCase):
 
             n_images += 1
 
-            result = detect(img)
+            result = detectar(img)
             for i in range(result[0]):
                 confidence = result[1 + 4 + i * 5]
                 n_instances += 1
@@ -177,7 +177,7 @@ class TestDetect(unittest.TestCase):
 
             n_images += 1
 
-            result = detect(img, "tmp.xml")
+            result = detectar(img, "tmp.xml")
             diff_types = read_result_classes("tmp.xml")
             for diff_type in diff_types:
                 self.assertTrue(diff_type == "nudo" or diff_type == "grieta")
@@ -196,7 +196,7 @@ class TestDetect(unittest.TestCase):
             n_images += 1
 
             start = time.time()
-            result = detect(img)
+            result = detectar(img)
             end = time.time()
 
             self.assertLess(end - start, 1)
@@ -206,14 +206,14 @@ class TestDetect(unittest.TestCase):
         Test that the function raises an error if the image does not exist
         """
         with self.assertRaises(Exception):
-            result = detect("img")
+            result = detectar("img")
 
     def test_only_image(self):
         """
         Test that the function works properly if the image path has been passed
         and returns a correct result, at least in structure
         """
-        result = detect("dataset/01.png")
+        result = detectar("dataset/01.png")
         self.assertEqual(len(result), result[0] * 5 + 1)
         self.assertFalse(
             os.path.exists("test.xml"),
@@ -226,7 +226,7 @@ class TestDetect(unittest.TestCase):
         and returns a correct result, at least in structure. Also checks if the
         xml has been outputed.
         """
-        result = detect("dataset/01.png", "test.xml")
+        result = detectar("dataset/01.png", "test.xml")
         self.assertEqual(len(result), result[0] * 5 + 1)
         self.assertTrue(
             os.path.exists("test.xml"),
