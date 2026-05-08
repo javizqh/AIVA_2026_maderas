@@ -9,7 +9,7 @@ import numpy as np
 import xml.etree.ElementTree as ET
 
 
-from src.main import detect
+from src.defect_detector import detect
 
 
 def tryint(s):
