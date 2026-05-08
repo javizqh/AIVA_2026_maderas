@@ -127,7 +127,7 @@ def detect_defects(img: np.array) -> List[int]:
     return defects
 
 
-def detect(image_filename: str, xml_file: str | None = None) -> List[int]:
+def detectar(image_filename: str, xml_file: str | None = None) -> List[int]:
     """Detect defects in the wood image passed and return a list of defects.
 
     Keyword arguments:
