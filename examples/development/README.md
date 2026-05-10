@@ -39,10 +39,10 @@ source .venv/bin/activate
 pip install -r utils_requirements.txt
 ```
 
-5. Compila tú código fuente enlazando las librerías necesarias:
+5. Compila tú código fuente enlazando las librerías necesarias (Cambia `python3.12` por la versión instalada posterior a 3.12):
 
 ```bash
-gcc src/main.c -I/usr/include/python3.12 -lpython3.12 -o development
+gcc src/main.c -I/usr/include/python3.12 -I./include -lpython3.12 -o minimum
 ```
 
 6. Ejecuta el ejemplo

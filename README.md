@@ -68,10 +68,10 @@ mv AIVA_2026_maderas/models/model.pt models/
 #include "defect_detector.h"
 ```
 
-4. Compila tú código fuente enlazando las librerías necesarias. Por ejemplo:
+4. Compila tú código fuente enlazando las librerías necesarias (Cambia `python3.12` por la versión instalada posterior a 3.12). Por ejemplo:
 
 ```bash
-gcc src/main.c -I/usr/include/python3.12 -lpython3.12 -o minimum
+gcc src/main.c -I/usr/include/python3.12 -I./include -lpython3.12 -o minimum
 ```
 
 ### Ejemplos de despliegues
@@ -98,7 +98,7 @@ mkdir  /home/alumno/pip_cache
 export TMPDIR=/home/alumno/pip_cache
 ```
 
-3. Seguimos los pasos del [Despliegue Mínimo](https://github.com/javizqh/AIVA_2026_maderas/examples/minimum) hasta el punto de la ejecución
+3. Seguimos los pasos del [Despliegue Mínimo](https://github.com/javizqh/AIVA_2026_maderas/examples/minimum) hasta el punto de la ejecución. En el caso de la Raspberry Pi de este ejemplo, la versión de Python instalada de base es la 3.13 por lo que no hace falta la instalación de ninguna versión de Python y habría que reemplazar `python3.12` por `python3.13` a la hora de compilar.
 
 ## Tests
 
