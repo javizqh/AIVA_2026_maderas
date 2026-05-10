@@ -33,7 +33,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Dirigase al directorio de este ejemplo:
+4. Dirijase al directorio de este ejemplo:
 
 ```bash
 cd examples/minimum

@@ -13,7 +13,7 @@ git clone https://github.com/javizqh/AIVA_2026_maderas.git
 cd AIVA_2026_maderas
 ```
 
-2. Dirigase al directorio de este ejemplo:
+2. Dirijase al directorio de este ejemplo:
 
 ```bash
 cd examples/development
