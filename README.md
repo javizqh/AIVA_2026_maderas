@@ -78,8 +78,8 @@ gcc src/main.c -I/usr/include/python3.12 -I./include -lpython3.12 -o minimum
 
 Hay disponibles 2 ejemplos distintos de como instalar y usar el detector de maderas. Haga click en la sección correspondiente:
 
-- [Despliegue Mínimo](https://github.com/javizqh/AIVA_2026_maderas/examples/minimum)
-- [Despliegue de Desarrollador](https://github.com/javizqh/AIVA_2026_maderas/examples/development)
+- [Despliegue Mínimo](https://github.com/javizqh/AIVA_2026_maderas/tree/main/examples/minimum)
+- [Despliegue de Desarrollador](https://github.com/javizqh/AIVA_2026_maderas/tree/main/examples/development)
 
 #### Despliegue en Raspberry Pi
 
@@ -98,7 +98,7 @@ mkdir  /home/alumno/pip_cache
 export TMPDIR=/home/alumno/pip_cache
 ```
 
-3. Seguimos los pasos del [Despliegue Mínimo](https://github.com/javizqh/AIVA_2026_maderas/examples/minimum) hasta el punto de la ejecución. En el caso de la Raspberry Pi de este ejemplo, la versión de Python instalada de base es la 3.13 por lo que no hace falta la instalación de ninguna versión de Python y habría que reemplazar `python3.12` por `python3.13` a la hora de compilar.
+3. Seguimos los pasos del [Despliegue Mínimo](https://github.com/javizqh/AIVA_2026_maderas/tree/main/examples/minimum) hasta el punto de la ejecución. En el caso de la Raspberry Pi de este ejemplo, la versión de Python instalada de base es la 3.13 por lo que no hace falta la instalación de ninguna versión de Python y habría que reemplazar `python3.12` por `python3.13` a la hora de compilar.
 
 ## Tests
 
